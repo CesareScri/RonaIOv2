@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rona Short</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="icon.gif" type="image/x-icon" sizes="16x16 32x32">
+</head>
+<body>
+    <nav>
+        <lord-icon
+        src="https://cdn.lordicon.com/xtpmscgz.json"
+        trigger="hover"
+        delay="5000"
+        style="width:90px;height:90px">
+         </lord-icon>
+        <h1>Rona.<span>io</span></h1>
+    </nav>
+    <main>
+        <div class="under-nav-bar" >
+            <a href="#" class="active-link">Upload</a>
+            <a href="#">Online Notes</a>
+            <a href="/index.html">Short link</a>
+        </div>
+        <div class="container principale" style="display: flex;">
+            <h2>Upload</h2>
+
+            <label for="fileInput" class="drop-container">
+                <span class="drop-title">Drop files here</span>
+                or
+                <input type="file" id="fileInput" required>
+              </label>
+
+              <div class="button-create btn-upload">
+                <button id="btn-upload">Upload</button>
+            </div>
+            
+        </div>
+
+        <div class="container uploading" style="display: none;">
+            <h2>Upload</h2>
+            <div class="percentage">
+                <p id="fileNames">node_modules.png</p>
+                <p id="percento">0%</p>
+            </div>
+            <div class="loading-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="mega-byte">
+                <span id="mbU">90MB</span>/<span id="mbT">90mb</span>
+            </div>
+        </div>
+
+        <div class="container result" style="display: none;">
+            <h2>Uploaded!</h2>
+            <div class="info-remain">
+                <p>Your files have been successfully uploaded.</p>
+            </div>
+
+            <div class="link-download">
+                <h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                    <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                    <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                  </svg>
+                  Download Link:</h3>
+
+                  <a href="#" id="linkR">https://rona.li/d/gshgsss</a>
+            </div>
+        </div>
+        
+        <div class="alert" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+            <p id="alertFile">No file found!</p>
+        </div>
+        
+        
+    </main>
+</body>
+<script src=" https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+<script src="./upload.js"></script>
+</html>
