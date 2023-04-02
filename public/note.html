@@ -20,43 +20,36 @@
     </nav>
     <main>
         <div class="under-nav-bar" >
-            <a href="#" class="active-link">Upload</a>
-            <a href="/note.html">Online Notes</a>
+            <a href="/upload.html">Upload</a>
+            <a href="#">Online Notes</a>
             <a href="/index.html">Short link</a>
         </div>
-        <div class="container principale" style="display: flex;">
-            <h2>Upload</h2>
-
-            <label for="fileInput" class="drop-container">
-                <span class="drop-title">Drop files here</span>
-                or
-                <input type="file" id="fileInput" required>
-              </label>
-
-              <div class="button-create btn-upload">
-                <button id="btn-upload">Upload</button>
+        <div class="container" style="display: flex;">
+            <h2>Online Notes</h2>
+            <div class="first-input input-field">
+                <p>Title:</p>
+                <input type="text" placeholder="ex. My project" id="noteTitle">
             </div>
-            
-        </div>
-
-        <div class="container uploading" style="display: none;">
-            <h2>Upload</h2>
-            <div class="percentage">
-                <p id="fileNames">node_modules.png</p>
-                <p id="percento">0%</p>
+            <div class="second-input input-field">
+                 <p>Description: </p>   
+                <textarea  id="textarea" placeholder="Hello World!"></textarea>
             </div>
-            <div class="loading-bar">
-                <div class="progress"></div>
-            </div>
-            <div class="mega-byte">
-                <span id="mbU">90MB</span>/<span id="mbT">90mb</span>
+            <div class="button-create">
+                <button id="btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                  </svg> Create</button>
             </div>
         </div>
 
         <div class="container result" style="display: none;">
-            <h2>Uploaded!</h2>
-            <div class="info-remain">
-                <p>Your files have been successfully uploaded.</p>
+            <h2>Your note now is online!</h2>
+            <div class="note-rslt">
+                <div class="note-rslt-title">
+                    <h4  id="resultTitle">My project</h4>
+                </div>
+                <div class="note-rslt-body">
+                    <p id="resultBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam id sequi inventore perferendis, corporis rerum explicabo. Magni, ullam odit ex ipsum quidem possimus quasi ducimus facilis, consequatur et fugit in.</p>
+                </div>
             </div>
 
             <div class="link-download">
@@ -64,7 +57,7 @@
                     <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
                     <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
                   </svg>
-                  Download Link:</h3>
+                  Note Link:</h3>
 
                   <a href="#" id="linkR">https://rona.li/d/gshgsss</a>
             </div>
@@ -76,11 +69,10 @@
               </svg>
             <p id="alertFile">No file found!</p>
         </div>
+
         
-        
-    </main>
+</main>
 </body>
-<script src=" https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
 <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-<script src="./upload.js"></script>
+<script src="./note.js"></script>
 </html>

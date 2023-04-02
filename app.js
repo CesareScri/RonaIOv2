@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 const database = new Datastore('linksDatabase.db');
 database.loadDatabase();
 
-const databaseServer = new Datastore('files.db');
+const databaseServer = new Datastore('DiskStore.db');
 databaseServer.loadDatabase();
 
 
@@ -137,3 +137,88 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     
   });
+
+  const noteDataBase = new Datastore('notes.db');
+  noteDataBase.loadDatabase();
+
+
+
+  app.post("/create-note", (request, response) => {
+
+    const title = request.body.title
+    const body = request.body.body
+
+    function makeid(length) {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        let counter = 0;
+        while (counter < length) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+          counter += 1;
+        }
+        return result;
+    }
+
+    const randomId = makeid(8)
+
+    noteDataBase.insert({title: title, body: body, link: `https://rona.li/n/${randomId}`, itemId: randomId})
+
+    response.json({success: true, msg: 'Successfully created!', link: `https://rona.li/n/${randomId}`})
+});
+
+
+app.get("/n/:idN", (request, response) => {
+    const idN = request.params.idN
+    noteDataBase.find({itemId: idN}, (err, data) => {
+        if (data.length == 1) {
+            const bodyDB =  data[0]  
+            response.write(`<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Rona.li | ${bodyDB.title}</title>
+                <link rel="stylesheet" href="https://rona.li/style.css">
+            </head>
+            <body>
+                <nav>
+                    <lord-icon
+                    src="https://cdn.lordicon.com/xtpmscgz.json"
+                    trigger="hover"
+                    delay="5000"
+                    style="width:90px;height:90px">
+                     </lord-icon>
+                    <h1>Rona.<span>io</span></h1>
+                </nav>
+                <main>
+                    <div class="container result" style="display: flex;">
+                        <div class="note-rslt">
+                            <div class="note-rslt-title">
+                                <h4 id="tb">${bodyDB.title}</h4>
+                            </div>
+                            <div class="note-rslt-body">
+                                <p id="bb">${bodyDB.body}</p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </body>
+            <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+            </html>`);
+            response.end()
+        } else {
+            fs.readFile('./public/404.html', function (err, html) {
+                if (err) {
+                    throw err; 
+                } 
+                    response.writeHeader(404, {"Content-Type": "text/html"});  
+                    response.write(html);  
+                    response.end();  
+                
+            });
+        };
+    
+    })
+});
