@@ -52,5 +52,10 @@ async function  uploadNote(a, b) {
     const url = await fetch('/create-note',options)
     const json = await url.json()
 
-    console.log(json)
+    c.style.display = 'none'
+    u.style.display = 'flex'
+
+    rT.innerHTML = b
+    rB.innerHTML = a
+    l.innerHTML = json.link
 }

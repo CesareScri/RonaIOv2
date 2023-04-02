@@ -68,8 +68,8 @@ $('#btn-upload').addEventListener('click', async () => {
             result.style.display = 'flex'
 
             linkR.setAttribute('target', `_blank`)
-            linkR.setAttribute('href', `https://rona.li/d/${res.data.id}`)
-            linkR.innerHTML = `https://rona.li/d/${res.data.id}`
+            linkR.setAttribute('href', `https://rona.li/d/${res.data.donwloadPage}`)
+            linkR.innerHTML = `https://rona.li/d/${res.data.donwloadPage}`
             }, 3500);
 
    })
